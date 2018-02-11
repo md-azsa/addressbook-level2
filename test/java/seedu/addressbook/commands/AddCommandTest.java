@@ -124,7 +124,7 @@ public class AddCommandTest {
 
         assertEquals(Address.EXAMPLE, p.getAddress().value);
         assertTrue(p.getAddress().isPrivate());
-        
+
 
         boolean isTagListEmpty = !p.getTags().iterator().hasNext();
         assertTrue(isTagListEmpty);
