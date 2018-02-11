@@ -11,7 +11,7 @@ public class Address {
     public static final String EXAMPLE = "123, Clementi Ave 3, #01-01, 422123";
     public static final String MESSAGE_ADDRESS_CONSTRAINTS = "Person addresses must be [BLOCK], [STREET], [UNIT], [POSTAL_CODE]";
     public static final String ADDRESS_VALIDATION_REGEX = ".+,.+,.+,.+";
-    public static final String COMMA = ",";
+    public static final String COMMA = ", ";
 
     public static final int BLOCK_INDEX = 0;
     public static final int STREET_INDEX = 1;
