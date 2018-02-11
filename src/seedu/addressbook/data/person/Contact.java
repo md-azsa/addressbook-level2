@@ -8,7 +8,7 @@ package seedu.addressbook.data.person;
 public class Contact {
 
     public String value;
-    private boolean isPrivate;
+    public boolean isPrivate;
 
     @Override
     public String toString() {
