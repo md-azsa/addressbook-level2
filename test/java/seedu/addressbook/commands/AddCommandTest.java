@@ -43,8 +43,8 @@ public class AddCommandTest {
     public void addCommand_invalidPhone_throwsException() {
         final String[] invalidNumbers = { "", " ", "1234-5678", "[]\\[;]", "abc", "a123", "+651234" };
         for (String number : invalidNumbers) {
-            assertConstructingInvalidAddCmdThrowsException(Name.EXAMPLE, Phone.EXAMPLE, true, Email.EXAMPLE, false,
-                    Address.EXAMPLE, true, DateOfBirth.EXAMPLE, false, EMPTY_STRING_LIST);
+            assertConstructingInvalidAddCmdThrowsException(Name.EXAMPLE, number, false, Email.EXAMPLE, true,
+                    Address.EXAMPLE, false, DateOfBirth.EXAMPLE, false, EMPTY_STRING_LIST);
         }
     }
 
@@ -53,8 +53,8 @@ public class AddCommandTest {
         final String[] invalidEmails = { "", " ", "def.com", "@", "@def", "@def.com", "abc@",
                                          "@invalid@email", "invalid@email!", "!invalid@email" };
         for (String email : invalidEmails) {
-            assertConstructingInvalidAddCmdThrowsException(Name.EXAMPLE, Phone.EXAMPLE, true, Email.EXAMPLE, false,
-                    Address.EXAMPLE, true, DateOfBirth.EXAMPLE, false, EMPTY_STRING_LIST);
+            assertConstructingInvalidAddCmdThrowsException(Name.EXAMPLE, Phone.EXAMPLE, false, email, false,
+                    Address.EXAMPLE, false, DateOfBirth.EXAMPLE, false,EMPTY_STRING_LIST);
         }
     }
 
@@ -62,8 +62,8 @@ public class AddCommandTest {
     public void addCommand_invalidAddress_throwsException() {
         final String[] invalidAddresses = { "", " " };
         for (String address : invalidAddresses) {
-            assertConstructingInvalidAddCmdThrowsException(Name.EXAMPLE, Phone.EXAMPLE, true, Email.EXAMPLE, false,
-                    Address.EXAMPLE, true, DateOfBirth.EXAMPLE, false, EMPTY_STRING_LIST);
+            assertConstructingInvalidAddCmdThrowsException(Name.EXAMPLE, Phone.EXAMPLE, true, Email.EXAMPLE,
+                    true, address, true, DateOfBirth.EXAMPLE, false, EMPTY_STRING_LIST);
         }
     }
 
@@ -72,7 +72,7 @@ public class AddCommandTest {
         final String[] invalidDOB = {"ss.ss.ss", "", " ", "122.2222.112233", "ssss.sss", "s.", "s.asdqw[][]p"};
         for (String dob : invalidDOB) {
             assertConstructingInvalidAddCmdThrowsException(Name.EXAMPLE, Phone.EXAMPLE, true, Email.EXAMPLE, false,
-                    Address.EXAMPLE, true, DateOfBirth.EXAMPLE, false, EMPTY_STRING_LIST);
+                    Address.EXAMPLE, true, dob, false, EMPTY_STRING_LIST);
         }
     }
 
@@ -115,14 +115,17 @@ public class AddCommandTest {
         // TODO: add comparison of tags to person.equals and equality methods to
         // individual fields that compare privacy to simplify this
         assertEquals(Name.EXAMPLE, p.getName().fullName);
+
         assertEquals(Phone.EXAMPLE, p.getPhone().value);
         assertTrue(p.getPhone().isPrivate());
+
         assertEquals(Email.EXAMPLE, p.getEmail().value);
         assertFalse(p.getEmail().isPrivate());
+
         assertEquals(Address.EXAMPLE, p.getAddress().value);
         assertTrue(p.getAddress().isPrivate());
-        assertEquals(DateOfBirth.EXAMPLE, p.getDOB().value);
-        assertTrue(p.getDOB().isPrivate());
+        
+
         boolean isTagListEmpty = !p.getTags().iterator().hasNext();
         assertTrue(isTagListEmpty);
     }
