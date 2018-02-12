@@ -67,10 +67,12 @@ public interface ReadOnlyPerson {
         if (getAddress().isPrivate()) {
             builder.append(detailIsPrivate);
         }
-        if (getDOB().isPrivate()) {
-            builder.append((detailIsPrivate));
-        }
         builder.append(getAddress())
+                .append(" Date of Birth: ");
+        if (getDOB().isPrivate()) {
+            builder.append(detailIsPrivate);
+        }
+        builder.append(getDOB())
                 .append(" Tags: ");
         for (Tag tag : getTags()) {
             builder.append(tag);
