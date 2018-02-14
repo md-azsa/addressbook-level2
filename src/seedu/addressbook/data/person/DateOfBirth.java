@@ -7,7 +7,7 @@ import java.time.LocalDate;
 
 public class DateOfBirth {
 
-    public static final String EXAMPLE = "1.2.1993 [DD].[MM].[YYYY]";
+    public static final String EXAMPLE = "1.2.1993";
     public static final String MESSAGE_DOB_CONSTRAINTS = "Numbers in date of birth should be in between periods and should be valid day, month and year.";
     public static final String DOB_VALIDATION_REGEX = "\\S+\\.\\S+\\.\\S+";
 
