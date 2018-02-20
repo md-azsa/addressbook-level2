@@ -12,6 +12,23 @@ public class UtilsTest {
 
 
     @Test
+    public void elementsAreNull() throws Exception {
+
+        // empty list
+        assertNotNull();
+        
+        assertAreNull(null, null);
+
+        // null and not null
+        assertAreNull(null, true, "123", null, "", 1);
+        assertAreNull(null, null, "aaa", "a", "bbb", false);
+
+        // all not null
+        assertNotNull(true, false, "aaa", "bbb", "ccc");
+
+    }
+
+    @Test
     public void elementsAreUnique() throws Exception {
         // empty list
         assertAreUnique();
@@ -34,6 +51,14 @@ public class UtilsTest {
         assertNotUnique(null, 1, new Integer(1));
         assertNotUnique(null, null);
         assertNotUnique(null, "a", "b", null);
+    }
+
+    private void assertAreNull(Object... objects) {
+        assertTrue(Utils.isAnyNull(objects));
+    }
+
+    private void assertNotNull(Object... objects) {
+        assertFalse(Utils.isAnyNull(objects));
     }
 
     private void assertAreUnique(Object... objects) {
